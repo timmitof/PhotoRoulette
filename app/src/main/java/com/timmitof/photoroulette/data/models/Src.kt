@@ -1,8 +1,8 @@
-package com.timmitof.photoroulette.data.dto
+package com.timmitof.photoroulette.data.models
 
 import com.google.gson.annotations.SerializedName
 
-data class SrcDto(
+data class Src(
     @SerializedName("landscape")
     val landscape: String,
     @SerializedName("large")

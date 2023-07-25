@@ -1,8 +1,8 @@
-package com.timmitof.photoroulette.data.dto
+package com.timmitof.photoroulette.data.models
 
 import com.google.gson.annotations.SerializedName
 
-data class PhotoDto(
+data class Photo(
     @SerializedName("alt")
     val alt: String,
     @SerializedName("avg_color")
@@ -20,7 +20,7 @@ data class PhotoDto(
     @SerializedName("photographer_url")
     val photographerUrl: String,
     @SerializedName("src")
-    val src: SrcDto,
+    val src: Src,
     @SerializedName("url")
     val url: String,
     @SerializedName("width")
