@@ -1,7 +1,8 @@
-package com.timmitof.photoroulette
+package com.timmitof.photoroulette.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.timmitof.photoroulette.R
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
