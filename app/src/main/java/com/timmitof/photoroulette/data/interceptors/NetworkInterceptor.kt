@@ -8,12 +8,14 @@ import okhttp3.Interceptor
 import okhttp3.Response
 import java.io.IOException
 import java.lang.Exception
+import java.net.SocketException
+import java.net.SocketTimeoutException
 
 class NetworkInterceptor(private val context: Context) : Interceptor {
 
     override fun intercept(chain: Interceptor.Chain): Response {
         if (!isInternetAvailable()) {
-            throw NoInternetException("No internet connection")
+            throw NoInternetException(message = "No internet connection")
         }
         val request = chain.request()
         try {
@@ -21,11 +23,11 @@ class NetworkInterceptor(private val context: Context) : Interceptor {
             if (response.isSuccessful) {
                 return chain.proceed(request)
             } else {
-                throw ServerException(errorCode = response.code, response.message)
+                throw ServerException(errorCode = response.code, message = response.message)
             }
         } catch (e: Exception) {
             val response = chain.proceed(request)
-            throw ServerException(errorCode = response.code, response.message)
+            throw ServerException(errorCode = response.code, message = response.message)
         }
     }
 

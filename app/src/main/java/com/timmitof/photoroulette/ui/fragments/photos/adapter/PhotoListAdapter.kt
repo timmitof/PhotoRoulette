@@ -6,13 +6,17 @@ import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.timmitof.photoroulette.data.models.Photo
+import com.timmitof.photoroulette.data.models.Src
 import com.timmitof.photoroulette.databinding.PhotoItemBinding
 
-class PhotoListAdapter: PagingDataAdapter<Photo, PhotoListAdapter.PhotoViewHolder>(PhotoComparator) {
+class PhotoListAdapter(private val onClickDetails: (Src) -> Unit): PagingDataAdapter<Photo, PhotoListAdapter.PhotoViewHolder>(PhotoComparator) {
 
     inner class PhotoViewHolder(private val binding: PhotoItemBinding): RecyclerView.ViewHolder(binding.root) {
         fun bind(photo: Photo?) {
             Glide.with(binding.root).load(photo?.src?.portrait).into(binding.imageView)
+            binding.imageView.setOnClickListener {
+                photo?.src?.let { src -> onClickDetails.invoke(src) }
+            }
         }
     }
 

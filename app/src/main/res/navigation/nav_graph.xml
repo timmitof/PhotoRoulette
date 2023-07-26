@@ -9,5 +9,17 @@
         android:id="@+id/photoListFragment"
         android:name="com.timmitof.photoroulette.ui.fragments.photos.PhotoListFragment"
         android:label="fragment_photo_list"
-        tools:layout="@layout/fragment_photo_list" />
+        tools:layout="@layout/fragment_photo_list" >
+        <action
+            android:id="@+id/action_photoListFragment_to_imageFullScreenFragment"
+            app:destination="@id/imageFullScreenFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/imageFullScreenFragment"
+        android:name="com.timmitof.photoroulette.ui.fragments.details.ImageFullScreenFragment"
+        android:label="ImageFullScreenFragment" >
+        <argument
+            android:name="src"
+            app:argType="com.timmitof.photoroulette.data.models.Src" />
+    </fragment>
 </navigation>
